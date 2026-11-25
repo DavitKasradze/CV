@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Davit Kasradze — CV</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            color: #1a1a2e;
+            background: #fff;
+            font-size: 10pt;
+            line-height: 1.5;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 72mm 1fr;
+        }
+
+        /* ===== LEFT SIDEBAR ===== */
+        .sidebar {
+            background: #1a1a2e;
+            color: #e0e0e8;
+            padding: 32px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .profile-photo {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center top;
+            border: 3px solid rgba(255, 255, 255, 0.15);
+            margin: 0 auto 4px;
+            display: block;
+        }
+
+        .sidebar-name {
+            text-align: center;
+            font-size: 14pt;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: -0.3px;
+        }
+
+        .sidebar-title {
+            text-align: center;
+            font-size: 8pt;
+            color: #a0a0b8;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-top: 2px;
+        }
+
+        .side-section {
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 16px;
+        }
+
+        .side-section-title {
+            font-size: 8pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #818cf8;
+            margin-bottom: 12px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            margin-bottom: 10px;
+            font-size: 8.5pt;
+            color: #c8c8d8;
+            word-break: break-all;
+        }
+
+        .contact-icon {
+            flex-shrink: 0;
+            width: 16px;
+            text-align: center;
+            font-size: 9pt;
+            margin-top: 1px;
+        }
+
+        /* Languages */
+        .lang-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+            font-size: 8.5pt;
+        }
+
+        .lang-name {
+            color: #e0e0e8;
+            font-weight: 500;
+        }
+
+        .lang-badge {
+            font-size: 7pt;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-native {
+            background: rgba(129, 140, 248, 0.2);
+            color: #a5b4fc;
+        }
+
+        .badge-c1 {
+            background: rgba(74, 222, 128, 0.15);
+            color: #86efac;
+        }
+
+        .badge-b2 {
+            background: rgba(250, 204, 21, 0.15);
+            color: #fde68a;
+        }
+
+        .badge-b1 {
+            background: rgba(34, 211, 238, 0.15);
+            color: #67e8f9;
+        }
+
+        /* Skills list */
+        .skill-tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .skill-tag {
+            font-size: 7.5pt;
+            padding: 3px 8px;
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.07);
+            color: #c8c8d8;
+            white-space: nowrap;
+        }
+
+        /* ===== MAIN CONTENT ===== */
+        .main {
+            padding: 32px 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .main-header {
+            border-bottom: 2px solid #1a1a2e;
+            padding-bottom: 10px;
+        }
+
+        .main-name {
+            font-size: 22pt;
+            font-weight: 800;
+            letter-spacing: -1px;
+            color: #1a1a2e;
+            line-height: 1.1;
+        }
+
+        .main-subtitle {
+            font-size: 10pt;
+            color: #666;
+            margin-top: 4px;
+        }
+
+        .section {
+            /* each section */
+        }
+
+        .section-title {
+            font-size: 10pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #1a1a2e;
+            border-bottom: 1.5px solid #e5e5ef;
+            padding-bottom: 5px;
+            margin-bottom: 12px;
+        }
+
+        .section-title .accent {
+            color: #6366f1;
+        }
+
+        /* Profile summary */
+        .profile-summary {
+            font-size: 9pt;
+            color: #444;
+            line-height: 1.65;
+        }
+
+        /* Experience entries */
+        .exp-entry {
+            margin-bottom: 14px;
+        }
+
+        .exp-entry:last-child {
+            margin-bottom: 0;
+        }
+
+        .exp-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 2px;
+        }
+
+        .exp-role {
+            font-size: 10.5pt;
+            font-weight: 700;
+            color: #1a1a2e;
+        }
+
+        .exp-date {
+            font-size: 8pt;
+            font-weight: 600;
+            color: #6366f1;
+            white-space: nowrap;
+        }
+
+        .exp-company {
+            font-size: 9pt;
+            color: #666;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .exp-bullets {
+            list-style: none;
+            padding: 0;
+        }
+
+        .exp-bullets li {
+            position: relative;
+            padding-left: 12px;
+            font-size: 8.5pt;
+            color: #444;
+            margin-bottom: 3px;
+            line-height: 1.55;
+        }
+
+        .exp-bullets li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 6px;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: #6366f1;
+        }
+
+        .exp-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            margin-top: 5px;
+        }
+
+        .exp-tag {
+            font-size: 7pt;
+            font-weight: 600;
+            padding: 2px 7px;
+            border-radius: 3px;
+            background: #f0f0ff;
+            color: #6366f1;
+        }
+
+        /* Education */
+        .edu-entry {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 8px;
+        }
+
+        .edu-name {
+            font-size: 9.5pt;
+            font-weight: 600;
+            color: #1a1a2e;
+        }
+
+        .edu-status {
+            font-size: 7.5pt;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 10px;
+            background: rgba(34, 197, 94, 0.1);
+            color: #16a34a;
+            text-transform: uppercase;
+        }
+
+        .edu-sub {
+            font-size: 8pt;
+            color: #888;
+            margin-top: -4px;
+            margin-bottom: 8px;
+        }
+
+        /* Print */
+        @media print {
+            body {
+                background: none;
+            }
+
+            .page {
+                margin: 0;
+                box-shadow: none;
+            }
+        }
+
+        /* Screen preview */
+        @media screen {
+            body {
+                background: #e8e8e8;
+                padding: 20px 0;
+            }
+
+            .page {
+                box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
+            }
+
+            .print-hint {
+                display: block;
+                text-align: center;
+                padding: 16px;
+                font-family: 'Segoe UI', sans-serif;
+                font-size: 13px;
+                color: #666;
+                max-width: 210mm;
+                margin: 0 auto 12px;
+                background: #fff;
+                border-radius: 8px;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            }
+
+            .print-hint kbd {
+                background: #eee;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                padding: 2px 6px;
+                font-size: 12px;
+            }
+        }
+
+        @media print {
+            .print-hint {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="print-hint">
+        Press <kbd>Ctrl</kbd> + <kbd>P</kbd> → Select <strong>"Save as PDF"</strong> as destination → Set margins to
+        <strong>None</strong> → Save
+    </div>
+
+    <div class="page">
+        <!-- LEFT SIDEBAR -->
+        <aside class="sidebar">
+            <div>
+                <img class="profile-photo" src="Images/download.jpg" alt="Davit Kasradze">
+                <div class="sidebar-name">Davit Kasradze</div>
+                <div class="sidebar-title">Software Developer</div>
+            </div>
+
+            <div class="side-section">
+                <div class="side-section-title">Contact</div>
+                <div class="contact-item">
+                    <span class="contact-icon">✉</span>
+                    <span>davit.kasradze23@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">📱</span>
+                    <span>+995 555 704 475</span>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">📍</span>
+                    <span>Tbilisi, Georgia</span>
+                </div>
+            </div>
+
+            <div class="side-section">
+                <div class="side-section-title">Languages</div>
+                <div class="lang-row">
+                    <span class="lang-name">Georgian</span>
+                    <span class="lang-badge badge-native">Native</span>
+                </div>
+                <div class="lang-row">
+                    <span class="lang-name">English</span>
+                    <span class="lang-badge badge-c1">C1</span>
+                </div>
+                <div class="lang-row">
+                    <span class="lang-name">Russian</span>
+                    <span class="lang-badge badge-b2">B2</span>
+                </div>
+                <div class="lang-row">
+                    <span class="lang-name">Italian</span>
+                    <span class="lang-badge badge-b1">B1</span>
+                </div>
+            </div>
+
+            <div class="side-section">
+                <div class="side-section-title">Technical Skills</div>
+                <div class="skill-tag-list">
+                    <span class="skill-tag">.NET / C#</span>
+                    <span class="skill-tag">REST APIs</span>
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">Git</span>
+                    <span class="skill-tag">Entity Framework</span>
+                </div>
+            </div>
+
+            <div class="side-section">
+                <div class="side-section-title">Soft Skills</div>
+                <div class="skill-tag-list">
+                    <span class="skill-tag">Live Presenting</span>
+                    <span class="skill-tag">Leadership</span>
+                    <span class="skill-tag">Event Management</span>
+                    <span class="skill-tag">Customer Service</span>
+                    <span class="skill-tag">Communication</span>
+                    <span class="skill-tag">Quality Assurance</span>
+                    <span class="skill-tag">Team Coordination</span>
+                    <span class="skill-tag">Problem Solving</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="main">
+            <div class="main-header">
+                <div class="main-name">Davit Kasradze</div>
+                <div class="main-subtitle">Software Developer · Versatile Professional</div>
+            </div>
+
+            <div class="section">
+                <div class="section-title"><span class="accent">▎</span> Profile</div>
+                <p class="profile-summary">
+                    Versatile professional based in Tbilisi, Georgia, with 7+ years of experience spanning software
+                    development,
+                    live casino gaming, competitive esports, customer service, and quality control. Adept at building
+                    backend
+                    systems with .NET/C#, performing under pressure in live broadcast environments, and leading
+                    community events.
+                    Europebet Winter Cup Tekken 7 champion with proven competitive drive, analytical thinking, and
+                    strong
+                    multilingual communication skills across four languages.
+                </p>
+            </div>
+
+            <div class="section">
+                <div class="section-title"><span class="accent">▎</span> Experience</div>
+
+                <div class="exp-entry">
+                    <div class="exp-top">
+                        <span class="exp-role">Quality Control Inspector</span>
+                        <span class="exp-date">2026</span>
+                    </div>
+                    <div class="exp-company">W.B. Investments</div>
+                    <ul class="exp-bullets">
+                        <li>Conducting thorough inspections to ensure products and processes meet company and industry
+                            quality standards</li>
+                        <li>Documenting findings and generating detailed quality reports</li>
+                        <li>Collaborating with production teams to identify and resolve quality issues</li>
+                    </ul>
+                    <div class="exp-tags">
+                        <span class="exp-tag">Quality Assurance</span>
+                        <span class="exp-tag">Inspection</span>
+                        <span class="exp-tag">Reporting</span>
+                        <span class="exp-tag">Compliance</span>
+                    </div>
+                </div>
+
+                <div class="exp-entry">
+                    <div class="exp-top">
+                        <span class="exp-role">.NET Backend Developer</span>
+                        <span class="exp-date">2024 — 2025</span>
+                    </div>
+                    <div class="exp-company">Velitech Georgia</div>
+                    <ul class="exp-bullets">
+                        <li>Designed and developed backend services and RESTful APIs using .NET / C#</li>
+                        <li>Worked with databases, Entity Framework, and data modeling</li>
+                        <li>Collaborated with frontend teams and participated in code reviews</li>
+                        <li>Implemented business logic, authentication, and integration services</li>
+                    </ul>
+                    <div class="exp-tags">
+                        <span class="exp-tag">.NET</span>
+                        <span class="exp-tag">C#</span>
+                        <span class="exp-tag">REST API</span>
+                        <span class="exp-tag">SQL</span>
+                        <span class="exp-tag">Backend</span>
+                    </div>
+                </div>
+
+                <div class="exp-entry">
+                    <div class="exp-top">
+                        <span class="exp-role">Customer Service Representative</span>
+                        <span class="exp-date">2024</span>
+                    </div>
+                    <div class="exp-company">Majorel Georgia — Car Maintenance</div>
+                    <ul class="exp-bullets">
+                        <li>Provided expert customer support for car maintenance services</li>
+                        <li>Managed client inquiries, scheduling, and service follow-ups</li>
+                        <li>Resolved customer complaints with professionalism and efficiency</li>
+                    </ul>
+                    <div class="exp-tags">
+                        <span class="exp-tag">Customer Support</span>
+                        <span class="exp-tag">Automotive</span>
+                        <span class="exp-tag">Communication</span>
+                    </div>
+                </div>
+
+                <div class="exp-entry">
+                    <div class="exp-top">
+                        <span class="exp-role">Esports Athlete & Tournament Organizer</span>
+                        <span class="exp-date">2021 — 2024</span>
+                    </div>
+                    <div class="exp-company">Professional Tekken Competitor</div>
+                    <ul class="exp-bullets">
+                        <li>Competed professionally in Tekken tournaments at national and international level</li>
+                        <li>🏆 Champion — Europebet Winter Cup (Tekken 7)</li>
+                        <li>Participated in Tekken France Tour and other European events</li>
+                        <li>Organized and managed local esports tournaments and community events</li>
+                    </ul>
+                    <div class="exp-tags">
+                        <span class="exp-tag">Esports</span>
+                        <span class="exp-tag">Event Management</span>
+                        <span class="exp-tag">Leadership</span>
+                        <span class="exp-tag">Competition</span>
+                    </div>
+                </div>
+
+                <div class="exp-entry">
+                    <div class="exp-top">
+                        <span class="exp-role">Game Presenter</span>
+                        <span class="exp-date">2019 — 2021</span>
+                    </div>
+                    <div class="exp-company">Evolution Georgia</div>
+                    <ul class="exp-bullets">
+                        <li>Hosted live casino games broadcast to international audiences in real-time</li>
+                        <li>Maintained engaging, professional on-camera presence during live sessions</li>
+                        <li>Ensured strict adherence to gaming regulations and company protocols</li>
+                    </ul>
+                    <div class="exp-tags">
+                        <span class="exp-tag">Live Broadcasting</span>
+                        <span class="exp-tag">Presentation</span>
+                        <span class="exp-tag">On-Camera</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title"><span class="accent">▎</span> Education</div>
+                <div class="edu-entry">
+                    <span class="edu-name">Agrarian University</span>
+                    <span class="edu-status">Graduated</span>
+                </div>
+                <div class="edu-sub">Higher education degree</div>
+                <div class="edu-entry">
+                    <span class="edu-name">V. Komarov's Physics & Mathematics School N199</span>
+                    <span class="edu-status">Graduated</span>
+                </div>
+                <div class="edu-sub">Secondary education — Physics & Mathematics specialization</div>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>
